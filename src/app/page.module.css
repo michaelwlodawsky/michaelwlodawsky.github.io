@@ -4,7 +4,26 @@
   justify-content: space-between;
   align-items: center;
   padding: 6rem;
-  min-height: 100vh;
+  width: 100%;
+  column-gap: 25x;
+}
+
+.introText p {
+  display: flex;
+  justify-content: center;
+  padding: 25px;
+  padding-left: 20%;
+  padding-right: 20%;
+  text-align: center;
+  font-family: monospace;
+  font-weight: bold;
+  font-size: xx-large;
+}
+
+.introText div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .description {
