@@ -27,8 +27,8 @@ export const validateToken = onRequest(
     const token = request.query.token;
     const validTokenRef = db.collection("validToken");
 
-    // set "*" for local testing, else ["michaelwlodawsky.com$"],
-    response.header("Access-Control-Allow-Origin", "michaelwlodawsky.com$");
+    // set "*" for local testing, else ["https://michaelwlodawsky.com"],
+    response.header("Access-Control-Allow-Origin", "https://michaelwlodawsky.com");
     // eslint-disable-next-line
     response.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     response.header("Access-Control-Allow-Methods", "GET");
