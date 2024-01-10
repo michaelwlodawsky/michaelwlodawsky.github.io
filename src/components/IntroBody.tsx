@@ -12,6 +12,7 @@ export default function IntroBody() {
     
     const searchParams = useSearchParams()
     const token = searchParams.get('token')
+    console.log(process.env.NODE_ENV)
 
     useEffect(() => {
         const timer = setInterval(() => {
