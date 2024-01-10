@@ -1,7 +1,4 @@
-import Image from 'next/image'
 import styles from './page.module.css'
-
-
 import IntroBody from '../components/IntroBody'
 
 /**
@@ -20,7 +17,6 @@ import IntroBody from '../components/IntroBody'
  */
 
 export default function Home() {
-  
   return (
     <main className={styles.main}>
       <IntroBody></IntroBody>
