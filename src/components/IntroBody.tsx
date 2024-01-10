@@ -42,6 +42,7 @@ export default function IntroBody() {
             console.error(error)
             setAwaitingValidation(false)
         })
+    // eslint-disable-next-line
     }, [])
 
     // TODO: Fix bug where if cursor is on edge of new line it breaks animation
