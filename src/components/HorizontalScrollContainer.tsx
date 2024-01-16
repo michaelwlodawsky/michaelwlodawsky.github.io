@@ -6,7 +6,7 @@ import { gsap, Linear } from "gsap";
 const testText = "test a long thing test a long thing test a long thing test a long thing test a long thing test a long thing test a long thing test a long thing test a long thing HorizontalScrollContainer HorizontalScrollContainer HorizontalScrollContaine HorizontalScrollContainer HorizontalScrollContainer HorizontalScrollContainerr"
 
 export default function HorizontalScrollContainer({ text }: { text: string }) {
-    const root = useRef()
+    const root = useRef(null)
     useEffect(() => {
         let ctx = gsap.context(() => {
             let tween = gsap.to(".scrollContent", {xPercent: -100, repeat: -1, duration: 20, ease: "linear"})

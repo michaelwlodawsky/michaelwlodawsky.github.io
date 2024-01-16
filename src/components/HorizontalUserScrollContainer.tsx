@@ -12,12 +12,12 @@ import  styles  from "@/app/page.module.css";
 const itemSize = 350
 
 export default function HorizontalUserScrollContainer() {
-    const root = useRef()
+    const root = useRef(null)
     const children = [
-        <DemoGif title='Nearby Drivers on the map' imageData={NearbyDriverDemo} width={itemSize}></DemoGif>,
-        <DemoGif title='In-app Ads MVP+' imageData={AdsMVPDemo} width={itemSize}></DemoGif>,
-        <DemoGif title='Checkout screen' imageData={CheckoutScreenDemo} width={itemSize}></DemoGif>,
-        <DemoGif title='App Redesign' imageData={DesignRefresh} width={itemSize}></DemoGif>
+        <DemoGif key='1' title='Nearby Drivers on the map' imageData={NearbyDriverDemo} width={itemSize}></DemoGif>,
+        <DemoGif key='2' title='In-app Ads MVP+' imageData={AdsMVPDemo} width={itemSize}></DemoGif>,
+        <DemoGif key='3' title='Checkout screen' imageData={CheckoutScreenDemo} width={itemSize}></DemoGif>,
+        <DemoGif key='4' title='App Redesign' imageData={DesignRefresh} width={itemSize}></DemoGif>
     ]
 
     const maxOffset = itemSize * (children.length - 1)
@@ -65,7 +65,7 @@ export default function HorizontalUserScrollContainer() {
                 <div className="scrollContent" style={{display: 'flex', flexDirection: 'row'}}>
                     {
                         children.map((child, _) => (
-                            <div>
+                            <div key={child.key}>
                                 {child}
                             </div>  
                         ))

@@ -4,7 +4,7 @@ import Image from 'next/image';
 import LyftLogo from '../../public/Lyft_logo-ezgif.com-png-to-webp-converter.webp'
 import HorizontalUserScrollContainer from './HorizontalUserScrollContainer';
 
-const skills: [string] = [
+const skills = [
     'Swift',
     'Git',
     'Python',
