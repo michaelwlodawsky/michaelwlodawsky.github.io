@@ -22,8 +22,65 @@
 
 .introText div {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
+}
+
+.horizontalScrollerButton {
+  border-color: transparent;
+  background-color: transparent;
+  height: 100px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.horizontalScrollerButton:hover {
+  border-color: transparent;
+  background-color: lightsteelblue;
+  height: 100px;
+}
+
+.portfolioHeader div {
+  display: flex;
+  flex-direction: row;
+  /* flex-direction: column;
+  align-items: center; */
+}
+
+.portfolioHeader {
+  display: flex;
+  /* justify-content: center; */
+  font-family: monospace;
+  font-size: 100px;
+  padding-left: 2%;
+  padding-bottom: 5px;
+}
+
+.portfolioBodyAll {
+  padding-left: 10px;
+}
+
+.portfolioSectionHeader {
+  font-size: xx-large;
+  font-weight: bold;
+  padding-top: 10px;
+  padding-bottom: 5px;
+}
+
+.portfolioBody {
+  display: flex;
+  white-space: pre;
+}
+
+.scrollContent {
+  display: inline-block;
+}
+
+.thinDivider {
+  display: flex;
+  height: 2px;
+  width: 90%;
+  background-color: white;
 }
 
 .description {

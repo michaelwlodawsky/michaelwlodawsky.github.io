@@ -15,18 +15,16 @@ import {getFirestore} from "firebase-admin/firestore";
 initializeApp();
 
 const db = getFirestore();
-
 // Start writing functions
 // https://firebase.google.com/docs/functions/typescript
 export const validateToken = onRequest(
   {
-    cors: false, // set true for local testing ["michaelwlodawsky.com$"],
     timeoutSeconds: 120,
   },
   async (request, response) => {
     const token = request.query.token;
     const validTokenRef = db.collection("validToken");
-
+  
     // set "*" for local testing, else ["https://michaelwlodawsky.com"],
     response.header("Access-Control-Allow-Origin", "https://michaelwlodawsky.com");
     // eslint-disable-next-line
