@@ -21,10 +21,10 @@ export default function HorizontalScrollContainer({ text }: { text: string }) {
 
 
     return (
-       <div style={{  minWidth: '100%', overflowX: 'hidden'}} ref={root}>
+       <div style={{ width: '100%', overflowX: 'hidden'}} ref={root}>
             <div style={{whiteSpace: 'nowrap'}}>
-                <p className='scrollContent' style={{display: 'inline-block', width: '100%'}}>{text}</p>
-                <p className='scrollContent' style={{display: 'inline-block', width: '100%'}}>{text}</p>
+                <p className='scrollContent' style={{display: 'inline-block', minWidth: '100%', whiteSpace: 'pre'}}>{text}</p>
+                <p className='scrollContent' style={{display: 'inline-block', minWidth: '100%', whiteSpace: 'pre'}}>{text}</p>
             </div>
        </div> 
     )

@@ -34,10 +34,10 @@ export default function Portfolio() {
             <div className={styles.portfolioBodyAll}>
                 <p className={styles.portfolioSectionHeader}> <span style={{color: 'lightGreen'}}>Ski</span>lls</p>
             </div>
-            <HorizontalScrollContainer text={skills.join(' • ')}></HorizontalScrollContainer>
+            <HorizontalScrollContainer text={skills.join(' • ') + ' '}></HorizontalScrollContainer>
             <div className={styles.portfolioBodyAll}>
                 <p className={styles.portfolioSectionHeader}> <span style={{color: 'orange'}}>Edu</span>cation</p>
-                <p className={styles.portfolioBody}>The University of Texas at Austin, Graduated: May 2020</p>
+                <p className={styles.portfolioBody}>The University of Texas at Austin, May 2020</p>
                 <p className={styles.portfolioSectionHeader}> <span style={{color: 'purple'}}>Exp</span>erience</p>
                 <div style={{padding: '10px'}}>
                     <div style={{display: 'flex', flexDirection: 'row'}}>
@@ -66,8 +66,9 @@ export default function Portfolio() {
                     
                 </div>
 
+                <div style={{height: '50px', width: '100%'}}>
 
-                
+                </div>
             </div>
         </div>  
     )

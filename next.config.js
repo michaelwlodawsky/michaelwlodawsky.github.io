@@ -2,7 +2,7 @@
 const nextConfig = {
   output: 'export',
   images: {
-    unoptimized: false
+    unoptimized: true // TODO: Fix, will be a part of GIF optimization work
   }
 }
 

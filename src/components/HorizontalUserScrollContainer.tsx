@@ -13,6 +13,7 @@ const itemSize = 350
 
 export default function HorizontalUserScrollContainer() {
     const root = useRef(null)
+    // TODO: Make GIFs more efficient and not store them locally
     const children = [
         <DemoGif key='1' title='Nearby Drivers on the map' imageData={NearbyDriverDemo} width={itemSize}></DemoGif>,
         <DemoGif key='2' title='In-app Ads MVP+' imageData={AdsMVPDemo} width={itemSize}></DemoGif>,
@@ -58,7 +59,7 @@ export default function HorizontalUserScrollContainer() {
     return (
         <div style={{display: 'flex', flexDirection: 'row'}}>
             <div style={{display: 'flex', alignItems: 'center'}}>
-                <button className={styles.horizontalScrollerButton} onClick={clickedPrevious}>{"<"}</button>
+                <button className={styles.horizontalScrollerButton} onClick={clickedPrevious}>{" < "}</button>
             </div>
             
             <div style={{ width: `${itemSize}px`, overflowX: 'hidden'}} ref={root}>
@@ -74,7 +75,7 @@ export default function HorizontalUserScrollContainer() {
             </div> 
 
             <div style={{display: 'flex', alignItems: 'center'}}>
-                <button className={styles.horizontalScrollerButton} onClick={clickedNext}>{">"}</button>
+                <button className={styles.horizontalScrollerButton} onClick={clickedNext}>{" > "}</button>
             </div>
         </div>
 
