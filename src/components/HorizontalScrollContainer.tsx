@@ -9,16 +9,13 @@ export default function HorizontalScrollContainer({ text }: { text: string }) {
     const root = useRef(null)
     useEffect(() => {
         let ctx = gsap.context(() => {
-            let tween = gsap.to(".scrollContent", {xPercent: -100, repeat: -1, duration: 20, ease: "linear"})
-            gsap.set(".scrollContent", {xPercent: 0});
-            gsap.to(tween, {})
+            gsap.to(".scrollContent", {xPercent: -100, repeat: -1, duration: 20, ease: "linear"})
         }, root)
 
         return () => {
             ctx.kill()
         }
     })
-
 
     return (
        <div style={{ width: '100%', overflowX: 'hidden'}} ref={root}>
