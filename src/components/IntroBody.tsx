@@ -86,6 +86,8 @@ export default function IntroBody() {
                 <p className={styles.introText}>Hi, my name is Michael Wlodawsky and I&apos;m a software engineer with a passion for building user-facing applications. I love learning new technologies and applying them to user-facing products; I have worked on products that see millions of users a week and I can say building at that scale is one of the most thrilling aspects of being a developer.</p>
                 <p className={styles.introText}>I originally did systems engineering, moved to iOS engineering, and now do full-stack mobile product development. On the side I&apos;ve been learning full-stack web development, hence the website, with a focus on design and security. I&apos;ve work primarily in Swift/SwiftUI for iOS development, Python/Python Flask for backend dev and Typescript/React/NextJS for web development.</p>
                 <p className={styles.introText}>If you&apos;re here from my resume or job application, please feel free to take a look at my work experience and personal portfolio! Otherwise, please enjoy the pretty site-s {";)"}</p>
+                
+                <div style={{height: '50px', width: '100%', justifyContent: 'center'}}>
                 { !awaitingValidation &&
                     <div style={{display: 'flex', justifyContent: 'center'}} className="actionButton">
                         <Link onMouseEnter={onMouseEnter} onMouseLeave={onMouseExit} style={{color: "white", padding: '10px'}} href={isTokenValid ? '/portfolio/?token=' + token : '/game'}>
@@ -94,8 +96,9 @@ export default function IntroBody() {
                         </Link>
                     </div>
                 }
+                </div>
 
-                <div style={{display: 'flex', justifyContent: 'center', gap: '10px', paddingTop: '25px'}}>
+                <div style={{display: 'flex', justifyContent: 'center', gap: '10px', paddingTop: '20px'}}>
                     <Link href={'https://github.com/michaelwlodawsky'}>
                         <Image className={styles.socialIcon} src={GithubIcon} alt='Michael Wlodawsky github link'/>
                     </Link>
