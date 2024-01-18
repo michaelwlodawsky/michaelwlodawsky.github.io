@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import { gsap } from "gsap";
 
 import NearbyDriverDemo from "../../public/demos/nearby_driver_demo-ezgif.com-gif-to-webp-converter.webp";

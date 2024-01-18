@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useRef } from "react";
-import { gsap, Linear } from "gsap";
+import { gsap } from "gsap";
 
 const testText = "test a long thing test a long thing test a long thing test a long thing test a long thing test a long thing test a long thing test a long thing test a long thing HorizontalScrollContainer HorizontalScrollContainer HorizontalScrollContaine HorizontalScrollContainer HorizontalScrollContainer HorizontalScrollContainerr"
 

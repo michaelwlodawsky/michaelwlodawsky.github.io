@@ -6,6 +6,9 @@ import styles from '../app/page.module.css'
 import { useSearchParams } from 'next/navigation'
 import { validateToken } from "../service/validateToken";
 import { gsap } from "gsap";
+import GithubIcon from "../../public/Github.png";
+import LinkedinIcon from "../../public/Linkedin.png";
+import Image from 'next/image'
 
 export default function IntroBody() {
     const [isCursorVisible, setCursorIsVisible] = useState(true)
@@ -91,6 +94,15 @@ export default function IntroBody() {
                         </Link>
                     </div>
                 }
+
+                <div style={{display: 'flex', justifyContent: 'center', gap: '10px', paddingTop: '25px'}}>
+                    <Link href={'https://github.com/michaelwlodawsky'}>
+                        <Image className={styles.socialIcon} src={GithubIcon} alt='Michael Wlodawsky github link'/>
+                    </Link>
+                    <Link href={'https://www.linkedin.com/in/michael-wlodawsky/'}>
+                        <Image className={styles.socialIcon} src={LinkedinIcon} alt='Michael Wlodawsky linkedin link'/>
+                    </Link>
+                </div>
             </div> 
         </div>
 

@@ -14,6 +14,18 @@ import IntroBody from '../components/IntroBody'
  * - I want my background to be dynamic with stars flying around that react to the cursor movement and placement
  * 
  * 
+ * Portfolio Items:
+ * Lyft:
+ * - Ads
+ * - Nearby Drivers on Map
+ * - App redesign
+ * 
+ * Nokia:
+ * - MEC
+ * 
+ * Raytheon:
+ * - Testing infrastructure + C/C++ embedded systems programming
+ * 
  */
 
 export default function Home() {
