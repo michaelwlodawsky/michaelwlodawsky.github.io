@@ -49,7 +49,7 @@ export default function IntroBody() {
             if (!awaitingValidation) {
                 if (isButtonHovering) { 
                     // TODO: Make more robust for any text size, need to be relative to parent '%'
-                    gsap.to(".circle", {width: '260px', height: '50px', borderRadius: '50px', xPercent: 0})
+                    gsap.to(".circle", {width: '255px', height: '50px', borderRadius: '50px', xPercent: 0})
                 } else {
                     gsap.to(".circle", {width: '50px', height: '50px', borderRadius: '50%', xPercent: 0})
                 }  
@@ -59,7 +59,22 @@ export default function IntroBody() {
         return () => {
             ctx.kill()
         }
-    })
+    }, [isButtonHovering])
+
+    useEffect(() => {
+        let animated = false
+        let ctx = gsap.context(() => {
+            gsap.set(".actionButton", {yPercent: 30, opacity: 0})
+            if (!awaitingValidation && !animated) {
+                gsap.to(".actionButton", {yPercent: 0, opacity: 1, duration: 1.5, ease: 'power2.out'})
+                animated = true
+            }
+        }, root)
+
+        return () => {
+            ctx.kill()
+        }
+    }, [awaitingValidation])
 
     return (
         <div>
