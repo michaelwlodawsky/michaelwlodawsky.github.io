@@ -99,10 +99,10 @@ export default function IntroBody() {
                 </div>
 
                 <div style={{display: 'flex', justifyContent: 'center', gap: '10px', paddingTop: '20px'}}>
-                    <Link href={'https://github.com/michaelwlodawsky'}>
+                    <Link rel="noopener noreferrer" target="_blank" href={'https://github.com/michaelwlodawsky'}>
                         <Image className={styles.socialIcon} src={GithubIcon} alt='Michael Wlodawsky github link'/>
                     </Link>
-                    <Link href={'https://www.linkedin.com/in/michael-wlodawsky/'}>
+                    <Link rel="noopener noreferrer" target="_blank" href={'https://www.linkedin.com/in/michael-wlodawsky/'}>
                         <Image className={styles.socialIcon} src={LinkedinIcon} alt='Michael Wlodawsky linkedin link'/>
                     </Link>
                 </div>
