@@ -7,6 +7,9 @@ const inter = Inter({ subsets: ['latin'] })
 export const metadata: Metadata = {
   title: 'Michael Wlodawsky',
   description: 'Website developed and maintained by Michael Wlodawsky',
+  icons: {
+    icon: '/favicon.ico',
+  },
 }
 
 export default function RootLayout({
