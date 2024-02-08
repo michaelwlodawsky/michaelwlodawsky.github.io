@@ -5,6 +5,7 @@ import { useState, useEffect, useRef } from "react";
 import styles from '../app/page.module.css'
 import { useSearchParams } from 'next/navigation'
 import { validateToken } from "../service/validateToken";
+import { anonAuth } from "../service/auth";
 import { gsap } from "gsap";
 import GithubIcon from "../../public/Github.png";
 import LinkedinIcon from "../../public/Linkedin.png";
@@ -33,17 +34,26 @@ export default function IntroBody() {
         }
     }, [])
 
+    // Validate token, if available, for portfolio access and
+    // sign-in anonymously for firebase storage access.
     useEffect(() => {
-        validateToken(
-            token, 
-            (isValid: boolean) => {
-                setTokenValid(isValid)
-                setAwaitingValidation(false)
-            },
-            (error: Error) => {
-                setAwaitingValidation(false)
-            }
-        )
+        const tokenValidation = async () => {
+            return await validateToken(token);
+        }
+
+        const anonymousAuth = async () => {
+            return await anonAuth();
+        }
+
+        Promise.all([tokenValidation(), anonymousAuth()])
+            .then(([tokenResult, authResult]) => {
+                setTokenValid(tokenResult && authResult.user.isAnonymous);
+                setAwaitingValidation(false);
+            })
+            .catch(error => {
+                console.log(error);
+                setAwaitingValidation(false);
+            })
     // eslint-disable-next-line
     }, [])
 
@@ -51,8 +61,7 @@ export default function IntroBody() {
         let ctx = gsap.context(() => {
             if (!awaitingValidation) {
                 if (isButtonHovering) { 
-                    // TODO: Make more robust for any text size, need to be relative to parent '%'
-                    gsap.to(".circle", {width: '255px', height: '50px', borderRadius: '50px', xPercent: 0})
+                    gsap.to(".circle", {width: '100%', height: '50px', borderRadius: '50px', xPercent: 0})
                 } else {
                     gsap.to(".circle", {width: '50px', height: '50px', borderRadius: '50%', xPercent: 0})
                 }  
@@ -89,7 +98,7 @@ export default function IntroBody() {
                 
                 <div style={{height: '50px', width: '100%', justifyContent: 'center'}}>
                 { !awaitingValidation &&
-                    <div style={{display: 'flex', justifyContent: 'center'}} className="actionButton">
+                    <div style={{display: 'flex', justifyContent: 'center', width: '255px'}} className="actionButton">
                         <Link onMouseEnter={onMouseEnter} onMouseLeave={onMouseExit} style={{color: "white", padding: '10px'}} href={isTokenValid ? '/portfolio/?token=' + token : '/game'}>
                             <span style={{zIndex: '1', fontWeight: 'bolder'}}>Would you like to know more?</span>
                             <div className="circle" style={{ position: 'absolute', width: '50px', height: '50px', backgroundColor: 'lightBlue', transform: 'translate(-25%, -75%)', borderRadius: '50%', opacity: '50%', zIndex: '-1'}}/>
