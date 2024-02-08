@@ -7,27 +7,28 @@ import Image from "next/image";
 import ISeeWhatYouDidThereImg from "../../../public/is_see_what_you_did_there_meme-ezgif.com-jpg-to-webp-converter.webp";
 
 export default function PortfolioPage() {
-    const [isTokenValid, setIsTokenValid] = useState(true)
-    const searchParams = useSearchParams()
-    const token = searchParams.get('token')
+    const [isTokenValid, setIsTokenValid] = useState(false);
+    const [isAwaitingValidation, setIsAwaitingValidation] = useState(true);
+    const searchParams = useSearchParams();
+    const token = searchParams.get('token');
     
     useEffect(() => {
-        validateToken(
-            token,
-            (isValid: boolean) => {
-                setIsTokenValid(isValid)
-            },
-            (error: Error) => {
-                setIsTokenValid(false)
-            }
-        )
+        validateToken(token)
+            .then((response) => {
+                setIsTokenValid(response);
+                setIsAwaitingValidation(false);
+            })
+            .catch(error => {
+                console.log(error);
+                setIsAwaitingValidation(false);
+            })
     })
 
-    if (isTokenValid) {
+    if (isTokenValid && !isAwaitingValidation) {
         return (
             <Portfolio></Portfolio> 
-        )
-    } else {
+        );
+    } else if (!isTokenValid && !isAwaitingValidation) {
         return (
             <div>
                 <h1 style={{display: 'flex', justifyContent: 'center'}}>You little rebel</h1>
@@ -36,6 +37,10 @@ export default function PortfolioPage() {
                     <Image src={ISeeWhatYouDidThereImg} layout="responsive" alt="I see what you did there meme"/>  
                 </div>     
             </div>
-        )
+        );
+    } else {
+        return (
+            <div></div>
+        );
     }
 }
