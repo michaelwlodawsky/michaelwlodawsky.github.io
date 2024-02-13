@@ -1,10 +1,10 @@
 'use client'
-import { useState, useEffect } from "react"
-import { validateToken } from "@/service/validateToken"
-import { useSearchParams } from 'next/navigation'
-import  Portfolio  from '@/components/Portfolio'
+import { useState, useEffect } from "react";
+import { validateToken } from "@/service/validateToken";
+import { useSearchParams } from 'next/navigation';
+import  WorkPortfolio  from '@/components/Portfolios/WorkPortfolio';
 import Image from "next/image";
-import ISeeWhatYouDidThereImg from "../../../public/is_see_what_you_did_there_meme-ezgif.com-jpg-to-webp-converter.webp";
+import ISeeWhatYouDidThereImg from "../../../../public/is_see_what_you_did_there_meme-ezgif.com-jpg-to-webp-converter.webp";
 
 export default function PortfolioPage() {
     const [isTokenValid, setIsTokenValid] = useState(false);
@@ -26,7 +26,9 @@ export default function PortfolioPage() {
 
     if (isTokenValid && !isAwaitingValidation) {
         return (
-            <Portfolio></Portfolio> 
+            <>
+                <WorkPortfolio></WorkPortfolio>
+            </>             
         );
     } else if (!isTokenValid && !isAwaitingValidation) {
         return (

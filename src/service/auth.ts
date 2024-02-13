@@ -1,10 +1,14 @@
-import { UserCredential, getAuth, signInAnonymously } from "firebase/auth";
+import { UserCredential, getAuth, signInAnonymously, connectAuthEmulator } from "firebase/auth";
 import { initializeApp } from "firebase/app";
 import { firebaseConfig } from "./config";
   
 const app = initializeApp(firebaseConfig);
-const auth = getAuth();
 
 export function anonAuth(): Promise<UserCredential> {
-    return signInAnonymously(auth)
+    const auth = getAuth(app);
+    if (process.env.NODE_ENV != 'production') {
+        connectAuthEmulator(auth, 'http://localhost:9099');
+    }
+    
+    return signInAnonymously(auth);
 }

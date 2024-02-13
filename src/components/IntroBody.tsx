@@ -1,30 +1,28 @@
 'use client'
 
 import Link from "next/link";
-import { useState, useEffect, useRef } from "react";
+import React from "react";
 import styles from '../app/page.module.css'
 import { useSearchParams } from 'next/navigation'
 import { validateToken } from "../service/validateToken";
 import { anonAuth } from "../service/auth";
-import { gsap } from "gsap";
-import GithubIcon from "../../public/Github.png";
-import LinkedinIcon from "../../public/Linkedin.png";
+import GithubIcon from "../../public/logos/Github.png";
+import LinkedinIcon from "../../public/logos/Linkedin.png";
 import Image from 'next/image'
+import { AnimatedLink } from "./AnimatedLink";
 
 export default function IntroBody() {
-    const [isCursorVisible, setCursorIsVisible] = useState(true)
-    const [isTokenValid, setTokenValid] = useState(false)
-    const [awaitingValidation, setAwaitingValidation] = useState(true)
-    const [isButtonHovering, setButtonHovering] = useState(false)
+    const [isCursorVisible, setCursorIsVisible] = React.useState(true)
+    const [isTokenValid, setTokenValid] = React.useState(false)
+    const [awaitingValidation, setAwaitingValidation] = React.useState(true)
     
     const searchParams = useSearchParams()
     const token = searchParams.get('token')
-    const root = useRef(null)
+    
+    const root = React.useRef(null);
 
-    const onMouseEnter = () => {setButtonHovering(true)}
-    const onMouseExit = () => {setButtonHovering(false)}
-
-    useEffect(() => {
+    // Cursor animation
+    React.useEffect(() => {
         const timer = setInterval(() => {
             setCursorIsVisible((prevVis) => !prevVis)
         }, 500)
@@ -36,7 +34,7 @@ export default function IntroBody() {
 
     // Validate token, if available, for portfolio access and
     // sign-in anonymously for firebase storage access.
-    useEffect(() => {
+    React.useEffect(() => {
         const tokenValidation = async () => {
             return await validateToken(token);
         }
@@ -57,37 +55,6 @@ export default function IntroBody() {
     // eslint-disable-next-line
     }, [])
 
-    useEffect(() => {
-        let ctx = gsap.context(() => {
-            if (!awaitingValidation) {
-                if (isButtonHovering) { 
-                    gsap.to(".circle", {width: '100%', height: '50px', borderRadius: '50px', xPercent: 0})
-                } else {
-                    gsap.to(".circle", {width: '50px', height: '50px', borderRadius: '50%', xPercent: 0})
-                }  
-            }
-        }, root)
-
-        return () => {
-            ctx.kill()
-        }
-    }, [isButtonHovering])
-
-    useEffect(() => {
-        let animated = false
-        let ctx = gsap.context(() => {
-            gsap.set(".actionButton", {yPercent: 30, opacity: 0})
-            if (!awaitingValidation && !animated) {
-                gsap.to(".actionButton", {yPercent: 0, opacity: 1, duration: 1.5, ease: 'power2.out'})
-                animated = true
-            }
-        }, root)
-
-        return () => {
-            ctx.kill()
-        }
-    }, [awaitingValidation])
-
     return (
         <div>
             <div className={styles.introText} ref={root}>
@@ -97,14 +64,9 @@ export default function IntroBody() {
                 <p className={styles.introText}>If you&apos;re here from my resume or job application, please feel free to take a look at my work experience and personal portfolio! Otherwise, please enjoy the pretty site-s {";)"}</p>
                 
                 <div style={{height: '50px', width: '100%', justifyContent: 'center'}}>
-                { !awaitingValidation &&
-                    <div style={{display: 'flex', justifyContent: 'center', width: '255px'}} className="actionButton">
-                        <Link onMouseEnter={onMouseEnter} onMouseLeave={onMouseExit} style={{color: "white", padding: '10px'}} href={isTokenValid ? '/portfolio/?token=' + token : '/game'}>
-                            <span style={{zIndex: '1', fontWeight: 'bolder'}}>Would you like to know more?</span>
-                            <div className="circle" style={{ position: 'absolute', width: '50px', height: '50px', backgroundColor: 'lightBlue', transform: 'translate(-25%, -75%)', borderRadius: '50%', opacity: '50%', zIndex: '-1'}}/>
-                        </Link>
-                    </div>
-                }
+                    { !awaitingValidation &&
+                        <AnimatedLink hrefString={isTokenValid ? '/portfolio/work/?token=' + token : '/game'} isActive={!awaitingValidation} root={root}></AnimatedLink>
+                    }
                 </div>
 
                 <div style={{display: 'flex', justifyContent: 'center', gap: '10px', paddingTop: '20px'}}>

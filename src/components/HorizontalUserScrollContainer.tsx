@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import React, { ReactComponentElement, ReactElement } from "react";
 import { gsap } from "gsap";
 
 import NearbyDriverDemo from "../../public/demos/nearby_driver_demo-ezgif.com-gif-to-webp-converter.webp";
@@ -11,17 +11,14 @@ import  styles  from "@/app/page.module.css";
 
 const itemSize = 350
 
-export default function HorizontalUserScrollContainer() {
-    const root = useRef(null)
-    // TODO: Make GIFs more efficient and not store them locally
-    const children = [
-        <DemoGif key='1' title='In-app Ads MVP+' imageData={AdsMVPDemo} width={itemSize}></DemoGif>,
-        <DemoGif key='2' title='App Redesign' imageData={DesignRefresh} width={itemSize}></DemoGif>,
-        <DemoGif key='3' title='Nearby Drivers on the map' imageData={NearbyDriverDemo} width={itemSize}></DemoGif>,
-        <DemoGif key='4' title='Checkout screen' imageData={CheckoutScreenDemo} width={itemSize}></DemoGif>
-    ]
+interface HorizontalUserScrollContainerProps {
+    children: ReactElement[]
+    itemWidth: string
+}
 
-    const maxOffset = itemSize * (children.length - 1)
+export default function HorizontalUserScrollContainer(props: HorizontalUserScrollContainerProps) {
+    const root = React.useRef(null)
+    let maxOffset = (props.children.length - 1) * itemSize;
     let offset = 0
 
     const clickedPrevious = () => {
@@ -32,7 +29,7 @@ export default function HorizontalUserScrollContainer() {
                 offset = -maxOffset
             }
 
-            gsap.to(".scrollContent", {x: offset, repeat: 0, duration: 0.25, ease: 'linear'})
+            gsap.to(".userScrollContent", {x: offset, repeat: 0, duration: 0.25, ease: 'linear'})
         }, root)
 
         return () => {
@@ -48,7 +45,7 @@ export default function HorizontalUserScrollContainer() {
                 offset = 0
             }
 
-            gsap.to(".scrollContent", {x: offset, repeat: 0, duration: 0.25, ease: 'linear'})
+            gsap.to(".userScrollContent", {x: offset, repeat: 0, duration: 0.25, ease: 'linear'})
         }, root)
 
         return () => {
@@ -62,11 +59,11 @@ export default function HorizontalUserScrollContainer() {
                 <button className={styles.horizontalScrollerButton} onClick={clickedPrevious}>{" < "}</button>
             </div>
             
-            <div style={{ width: `${itemSize}px`, overflowX: 'hidden'}} ref={root}>
-                <div className="scrollContent" style={{display: 'flex', flexDirection: 'row'}}>
+            <div style={{ width: props.itemWidth, overflowX: 'hidden'}} ref={root}>
+                <div className="userScrollContent" style={{display: 'flex', flexDirection: 'row', width: props.itemWidth}}>
                     {
-                        children.map((child, _) => (
-                            <div key={child.key}>
+                        props.children.map((child, _) => (
+                            <div key={child.key} style={{width: props.itemWidth}}>
                                 {child}
                             </div>  
                         ))

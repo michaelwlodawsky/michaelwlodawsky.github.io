@@ -26,6 +26,11 @@
   align-items: center;
 }
 
+.introText span {
+  font-style: normal;
+  font-weight: bolder;
+}
+
 .horizontalScrollerButton {
   border-color: transparent;
   background-color: transparent;
