@@ -97,3 +97,36 @@
   width: 50px;
   height: 50px;
 }
+
+@keyframes scrollAnimation {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+.scrollContainer {
+  display: inline-block;
+  min-width: 100%;
+  white-space: pre;
+  animation-name: scrollAnimation;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  animation-duration: 15s;
+}
+
+.scrollContainerWrapper {
+  white-space: nowrap;
+  animation-name: scrollAnimation;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  /* animation-duration: 20s; <-- setting this breaks the animation... why? */
+  animation-play-state: paused;
+  animation-direction: reverse;
+}
+
+.scrollContainerWrapper:hover {
+  animation-play-state: running;
+}
