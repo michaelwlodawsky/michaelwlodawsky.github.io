@@ -15,3 +15,16 @@ cd functions && npm run build && firebase emulators:start
 ```
 
 Note: To test on mobile you'll need to update the code to reflect the IP address of the machine hosting the website.
+
+**TODO: Make below steps automatic**
+
+Generate token to see portfolio e2e:
+
+Step 1:
+
+```
+Go to: http://127.0.0.1:4000
+```
+
+Step 2:
+Create token for testing. Check Firebase console for schema.

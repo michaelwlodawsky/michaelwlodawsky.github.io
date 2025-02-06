@@ -3,6 +3,7 @@ import HorizontalScrollContainer from "@/components/HorizontalScrollContainer";
 import LyftLogo from '../../../public/logos/Lyft_logo.webp';
 import NokiaLogo from "../../../public/logos/Nokia_logo.png";
 import RaytheonLogo from "../../../public/logos/Raytheon_logo.png";
+import PinterestLogo from "../../../public/logos/Pinterest_logo.png";
 
 import NearbyDriverDemo from "../../../public/demos/nearby_driver_demo-ezgif.com-gif-to-webp-converter.webp";
 import CheckoutScreenDemo from "../../../public/demos/Checkout_screen_demo-ezgif.com-gif-to-webp-converter.webp";
@@ -55,7 +56,15 @@ export default function WorkPortfolio() {
                 <p className={styles.portfolioBody}>The University of Texas at Austin, May 2020</p>
                 <p className={styles.portfolioSectionHeader}> <span style={{color: 'purple'}}>Exp</span>erience</p>
 
-                <TitleLogoHeader image={LyftLogo} imageAlt='Lyft Logo' title='Tech lead of Lyft Rider App, Senior iOS Full Stack Engineer' timeSpan='June 2020 - Present'/>
+                <TitleLogoHeader image={PinterestLogo} imageAlt='Pinterest Logo' title='Tech lead of Activation Product team, iOS/Full Stack Engineer' timeSpan='August 2024 - Present'/>
+                <ExpandableItemList>
+                    <ExpandableItem title='Total Revamp of New User XP'>
+                        <a>TODO: Add demo, led this work since 2nd week of employment</a>
+                        {/* <DemoGif imageData={AdsMVPDemo} width={itemWidth}></DemoGif> */}
+                    </ExpandableItem>
+                </ExpandableItemList>
+
+                <TitleLogoHeader image={LyftLogo} imageAlt='Lyft Logo' title='Tech lead of Rider Post-Request team, iOS/Full Stack Engineer' timeSpan='June 2020 - August 2024'/>
 
                 <ExpandableItemList>
                     <ExpandableItem title='In-app Ads MVP+'>
